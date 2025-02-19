@@ -1,13 +1,3 @@
-name: Build and Deploy Electron App
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
 jobs:
   build:
     runs-on: macos-latest
@@ -20,12 +10,9 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: |
+          cd $GITHUB_WORKSPACE/Inventory/Inventory/Inventory  # استخدام $GITHUB_WORKSPACE للوصول إلى المجلد الذي يحتوي على الكود
           yarn install
       - name: Build Electron app
         run: |
+          cd $GITHUB_WORKSPACE/Inventory/Inventory/Inventory  # نفس التعديل هنا
           yarn electron:mac
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: electron-app-mac
-          path: dist/mac  # المسار إلى ملف التطبيق المُبني
