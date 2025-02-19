@@ -13,18 +13,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: عرض الملفات للتأكد من المسار الصحيح
+    - name: Debug - Show project structure
       run: ls -R
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16' 
+        node-version: '16'
 
     - name: Install dependencies
       run: |
+        cd Inventory/Inventory/Inventory
         yarn install
 
     - name: Build Electron app for macOS
       run: |
+        cd Inventory/Inventory/Inventory
         yarn electron:mac
