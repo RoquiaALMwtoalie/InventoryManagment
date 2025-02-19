@@ -20,9 +20,9 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: |
-          cd $GITHUB_WORKSPACE/Inventory/Inventory/Inventory  # استخدام $GITHUB_WORKSPACE للوصول إلى المجلد الذي يحتوي على الكود
+          cd $GITHUB_WORKSPACE  # هذا سيأخذك إلى المسار الجذري للمشروع
           yarn install
       - name: Build Electron app
         run: |
-          cd $GITHUB_WORKSPACE/Inventory/Inventory/Inventory  # نفس التعديل هنا
+          cd $GITHUB_WORKSPACE  # التعديل هنا أيضاً
           yarn electron:mac
