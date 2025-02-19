@@ -1,13 +1,3 @@
-name: Build Electron App
-
-on:
-  push:
-    branches:
-      - main  # أو الفرع الذي تريد أن يتم تفعيل الـ workflow عند دفع التغييرات إليه
-  pull_request:
-    branches:
-      - main  # أو الفرع الذي تريد أن يتم تفعيل الـ workflow عند فتح pull request إليه
-
 jobs:
   build:
     runs-on: macos-latest
@@ -20,9 +10,9 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: |
-          cd Inventory/Inventory/Inventory
+          cd C:\Users\hp\Desktop\Code\Inventory\Inventory\Inventory  # الانتقال إلى المسار الصحيح
           yarn install
       - name: Build Electron app
         run: |
-          cd Inventory/Inventory/Inventory
+          cd C:\Users\hp\Desktop\Code\Inventory\Inventory\Inventory  # التأكد من المسار الصحيح
           yarn electron:mac
