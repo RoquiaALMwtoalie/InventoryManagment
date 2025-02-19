@@ -1,3 +1,13 @@
+name: Build and Deploy Electron App
+
+on:
+  push:
+    branches:
+      - main  # أو أي فرع آخر ترغب في تتبع التغييرات عليه
+  pull_request:
+    branches:
+      - main  # أو أي فرع آخر ترغب في تتبع التغييرات عليه
+
 jobs:
   build:
     runs-on: macos-latest
