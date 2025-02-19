@@ -1,4 +1,4 @@
-name: Build and Deploy Electron App
+name: Build Electron app for macOS
 
 on:
   push:
@@ -11,21 +11,26 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+
     steps:
-      - name: Checkout code
+      - name: Check out repository
         uses: actions/checkout@v2
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'
+
       - name: Install dependencies
         run: |
-          echo "Current directory:"
-          pwd  # عرض المجلد الحالي لتتأكد من مكان وجود الكود
-          ls -la  # عرض محتويات المجلد للتأكد من أن package.json موجود
-          cd $GITHUB_WORKSPACE
-          yarn install
-      - name: Build Electron app
+          npm install
+
+      - name: Build Electron app for macOS
         run: |
-          cd $GITHUB_WORKSPACE
-          yarn electron:mac
+          npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: electron-app
+          path: dist/
