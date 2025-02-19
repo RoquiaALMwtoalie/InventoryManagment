@@ -1,22 +1,18 @@
-name: Build Electron app for macOS
-on:
-  push:
-    branches:
-      - main
 jobs:
   build:
     runs-on: macos-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'  # أو يمكنك استخدام 18 بدلاً من 16 إذا أردت
-
-    - name: Install dependencies
-      run: yarn install
-
-    - name: Build Electron app for macOS
-      run: yarn electron:mac
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: |
+          cd Inventory/Inventory/Inventory  # الانتقال إلى المسار الصحيح
+          yarn install
+      - name: Build Electron app
+        run: |
+          cd Inventory/Inventory/Inventory  # التأكد من المسار الصحيح مرة أخرى
+          yarn electron:mac
