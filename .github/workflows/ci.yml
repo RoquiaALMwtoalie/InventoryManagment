@@ -3,10 +3,10 @@ name: Build and Deploy Electron App
 on:
   push:
     branches:
-      - main  # أو أي فرع آخر ترغب في تتبع التغييرات عليه
+      - main
   pull_request:
     branches:
-      - main  # أو أي فرع آخر ترغب في تتبع التغييرات عليه
+      - main
 
 jobs:
   build:
@@ -20,9 +20,12 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: |
-          cd ~/Desktop/Code/Inventory/Inventory/Inventory  # تعديل المسار ليكون متوافقًا مع macOS
           yarn install
       - name: Build Electron app
         run: |
-          cd ~/Desktop/Code/Inventory/Inventory/Inventory  # تعديل المسار ليكون متوافقًا مع macOS
           yarn electron:mac
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: electron-app-mac
+          path: dist/mac  # المسار إلى ملف التطبيق المُبني
