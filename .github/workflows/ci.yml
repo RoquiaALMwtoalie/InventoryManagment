@@ -10,13 +10,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Debug - Show project structure
-      run: ls -R  # هذا سيعرض هيكل المجلدات
-
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '16'  # أو يمكنك استخدام 18 بدلاً من 16 إذا أردت
 
     - name: Install dependencies
       run: yarn install
