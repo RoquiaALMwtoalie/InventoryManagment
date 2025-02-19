@@ -12,20 +12,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        path: app
+
+    - name: عرض الملفات للتأكد من المسار الصحيح
+      run: ls -R
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'  # يمكنك تغييره إلى الإصدار المستخدم في مشروعك
+        node-version: '16' 
 
     - name: Install dependencies
       run: |
-        cd app
         yarn install
 
     - name: Build Electron app for macOS
       run: |
-        cd app
         yarn electron:mac
